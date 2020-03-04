@@ -33,3 +33,45 @@ nav {
 	align-items: center;
 	padding: 20px 0px;
 }
+
+.logo {
+	font-size: 20px;
+}
+
+.page {
+	min-height: 90vh;
+	display: grid;
+	grid-template-columns: 5% 1fr 1fr 1fr 5%;
+}
+.hero {
+	overflow: hidden;
+	height: 500px;
+	align-self: center;
+	justify-self: center;
+	display: flex;
+}
+
+.hero img {
+	height: 500px;
+	transition: transform 0.3s ease-out;
+	cursor: pointer;
+}
+
+.model-right {
+	transform: translate(0%, 10%);
+}
+.model-left {
+	transform: translate(0%, -10%);
+}
+
+.hero:hover .model-right {
+	transform: translate(0%, 0%);
+}
+.hero:hover .model-left {
+	transform: translate(0%, 0%);
+}
+
+.details {
+	grid-column: 2/3;
+	align-self: end;
+}
