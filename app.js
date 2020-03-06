@@ -14,6 +14,7 @@ function init() {
 		slide.addEventListener('click', function() {
 			changeDots(this);
 			nextSlide(index);
+			scrollSlide = index;
 		});
 	});
 
@@ -33,7 +34,18 @@ function init() {
 		const nextText = nextPage.querySelector('.details');
 		const portfolio = document.querySelector('.portfolio');
 
-		const t1 = new TimelineMax();
+		const t1 = new TimelineMax({
+			onStart: function() {
+				slides.forEach((slide) => {
+					slide.style.pointerEvents = 'none';
+				});
+			},
+			onComplete: function() {
+				slides.forEach((slide) => {
+					slide.style.pointerEvents = 'all';
+				});
+			}
+		});
 
 		t1
 			.fromTo(currentLeft, 0.3, { y: '-10%' }, { y: '-100%' })
