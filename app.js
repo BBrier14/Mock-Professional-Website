@@ -41,8 +41,10 @@ function init() {
 			.fromTo(currentPage, 0.3, { opacity: 1, pointerEvents: 'all' }, { opacity: 0, pointerEvents: 'none' })
 			.fromTo(nextPage, 0.3, { opacity: 0, pointerEvents: 'none' }, { opacity: 1, pointerEvents: 'all' }, '-=0.6')
 			.fromTo(nextLeft, 0.3, { y: '-100%' }, { y: '-10%' }, '-=0.6')
-			.fromTo(nextRight, 0.3, { y: '-100%' }, { y: '10%' }, '-=0.8');
-
+			.fromTo(nextRight, 0.3, { y: '-100%' }, { y: '10%' }, '-=0.8')
+			.fromTo(nextText, 0.3, { opacity: 0, y: 0 }, { opacity: 1, y: 0 })
+			.set(nextLeft, { clearProps: 'all' })
+			.set(nextRight, { clearProps: 'all' });
 		current = pageNumber;
 	}
 }
