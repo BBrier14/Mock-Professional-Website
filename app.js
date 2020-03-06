@@ -51,6 +51,14 @@ function init() {
 
 	document.addEventListener('wheel', throttle(scrollChange, 1500));
 
+	function switchDots(dotNumber) {
+		const activeDot = document.querySelectorAll('.slide')[dotNumber];
+		slides.forEach((slide) => {
+			slide.classList.remove('active');
+		});
+		activeDot.classList.add('active');
+	}
+
 	function scrollChange(e) {
 		if (e.deltaY > 0) {
 			scrollSlide += 1;
@@ -64,6 +72,7 @@ function init() {
 		if (scrollSlide < 0) {
 			scrollSlide = 2;
 		}
+		switchDots(scrollSlide);
 		nextSlide(scrollSlide);
 	}
 }
