@@ -8,6 +8,7 @@ function init() {
 	];
 	//Tracker
 	let current = 0;
+	let scrollSlide = 0;
 
 	slides.forEach((slide, index) => {
 		slide.addEventListener('click', function() {
@@ -48,7 +49,23 @@ function init() {
 		current = pageNumber;
 	}
 
-	document.addEventListener('wheel');
+	document.addEventListener('wheel', throttle(scrollChange, 1500));
+
+	function scrollChange(e) {
+		if (e.deltaY > 0) {
+			scrollSlide += 1;
+		} else {
+			scrollSlide -= 1;
+		}
+
+		if (scrollSlide > 2) {
+			scrollSlide = 0;
+		}
+		if (scrollSlide < 0) {
+			scrollSlide = 2;
+		}
+		nextSlide(scrollSlide);
+	}
 }
 
 function throttle(func, limit) {
