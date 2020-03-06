@@ -4,7 +4,7 @@ function init() {
 	const backgrounds = [
 		`radial-gradient(#2B3760, #0B1023)`,
 		`radial-gradient(#4E3022, #161616)`,
-		`radial-gradient(#4EE4342, #161616)`
+		`radial-gradient(#4E4342, #161616)`
 	];
 	//Tracker
 	let current = 0;
@@ -37,7 +37,13 @@ function init() {
 		t1
 			.fromTo(currentLeft, 0.3, { y: '-10%' }, { y: '-100%' })
 			.fromTo(currentRight, 0.3, { y: '10%' }, { y: '-100%' }, '-=0.2')
-			.to(portfolio, 0.3, { backgroundImage: backgrounds[pageNumber] });
+			.to(portfolio, 0.3, { backgroundImage: backgrounds[pageNumber] })
+			.fromTo(currentPage, 0.3, { opacity: 1, pointerEvents: 'all' }, { opacity: 0, pointerEvents: 'none' })
+			.fromTo(nextPage, 0.3, { opacity: 0, pointerEvents: 'none' }, { opacity: 1, pointerEvents: 'all' }, '-=0.6')
+			.fromTo(nextLeft, 0.3, { y: '-100%' }, { y: '-10%' }, '-=0.6')
+			.fromTo(nextRight, 0.3, { y: '-100%' }, { y: '10%' }, '-=0.8');
+
+		current = pageNumber;
 	}
 }
 
